@@ -1,0 +1,30 @@
+{
+  "name": "swara-extension",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "typecheck": "tsc --noEmit",
+    "test": "node --import tsx test/extract.test.ts && node --import tsx test/execute.test.ts && node --import tsx test/action-overlay.test.ts && node --import tsx test/overlay-status.test.ts && node --import tsx test/action-routing.test.ts && node --import tsx test/navigation.test.ts && node --import tsx test/workflows.test.ts && node --import tsx test/pdf-classification.test.ts && node --import tsx test/anydoc-conversion.test.ts && node --import tsx test/auth.test.ts && node --import tsx test/cloud-sync.test.ts"
+  },
+  "dependencies": {
+    "@firecrawl/anydoc-wasm": "0.1.9",
+    "@firecrawl/pdf-inspector-wasm": "1.15.0",
+    "lucide-react": "0.462.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@crxjs/vite-plugin": "^2.7.1",
+    "@types/chrome": "^0.0.280",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "jsdom": "^29.1.1",
+    "tsx": "^4.23.1",
+    "typescript": "^5.7.2",
+    "vite": "^5.4.14"
+  }
+}

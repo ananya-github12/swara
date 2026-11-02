@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register — DevPulse Conference 2027</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                   "Helvetica Neue", Arial, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      min-height: 100vh;
+      /* Distinct: warm coral-to-amber gradient background */
+      background: linear-gradient(150deg, #1a0a2e 0%, #16213e 40%, #0f3460 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 48px 16px 64px;
+    }
+
+    /* ── Centered Card layout (distinct from full-width form 1) ── */
+    .event-header {
+      text-align: center;
+      color: #fff;
+      margin-bottom: 36px;
+      max-width: 580px;
+    }
+    .event-badge {
+      display: inline-block;
+      background: rgba(249,115,22,0.2);
+      border: 1px solid rgba(249,115,22,0.5);
+      color: #fb923c;
+      border-radius: 99px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 3px 14px;
+      margin-bottom: 16px;
+    }
+    .event-header h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.8px;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .event-header h1 span {
+      /* Distinct accent: orange */
+      background: linear-gradient(90deg, #f97316, #fbbf24);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .event-header p {
+      color: #94a3b8;
+      font-size: 0.9rem;
+    }
+    .event-meta {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 10px;
+      font-size: 0.82rem;
+      color: #64748b;
+    }
+
+    /* ── Card ── */
+    .registration-card {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.06);
+      width: 100%;
+      max-width: 580px;
+      overflow: hidden;
+    }
+    .card-accent-bar {
+      height: 5px;
+      background: linear-gradient(90deg, #f97316, #fbbf24, #f97316);
+      background-size: 200%;
+      animation: shimmer 3s linear infinite;
+    }
+    @keyframes shimmer {
+      0%   { background-position: -200%; }
+      100% { background-position: 200%; }
+    }
+    .card-body { padding: 36px 40px 40px; }
+    @media (max-width: 480px) { .card-body { padding: 28px 24px 32px; } }
+
+    /* ── Section headings within card ── */
+    .section-label {
+      font-size: 0.67rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #f97316;
+      margin-bottom: 18px;
+      padding-bottom: 8px;
+      border-bottom: 1.5px solid #ffedd5;
+      margin-top: 28px;
+    }
+    .section-label:first-of-type { margin-top: 0; }
+
+    /* ── Fields ── */
+    .field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 18px; }
+    .field:last-child { margin-bottom: 0; }
+
+    label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #374151;
+    }
+    label .req { color: #dc2626; margin-left: 3px; }
+    label .hint {
+      font-weight: 400;
+      color: #9ca3af;
+      font-size: 0.75rem;
+      margin-left: 4px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    select,
+    textarea {
+      border: 1.5px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      color: #111827;
+      background: #f9fafb;
+      transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+      width: 100%;
+    }
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: #f97316;
+      box-shadow: 0 0 0 3px rgba(249,115,22,0.15);
+      background: #fff;
+    }
+    input::placeholder, textarea::placeholder {
+      color: #9ca3af;
+      font-style: italic;
+    }
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+      line-height: 1.55;
+    }
+
+    /* Select styling */
+    .select-wrap { position: relative; }
+    select { appearance: none; cursor: pointer; }
+    .select-wrap::after {
+      content: "▾";
+      position: absolute;
+      right: 13px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #9ca3af;
+      pointer-events: none;
+    }
+
+    /* Fieldset / checkbox */
+    fieldset { border: none; padding: 0; }
+    legend {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 10px;
+      width: 100%;
+    }
+    .checkbox-single {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .checkbox-single input[type="checkbox"] {
+      width: 17px;
+      height: 17px;
+      flex-shrink: 0;
+      margin-top: 2px;
+      accent-color: #f97316;
+      cursor: pointer;
+    }
+    .checkbox-single label {
+      font-weight: 400;
+      font-size: 0.875rem;
+      color: #374151;
+      cursor: pointer;
+      line-height: 1.45;
+    }
+
+    /* ── Divider ── */
+    .divider { height: 1px; background: #f3f4f6; margin: 4px 0 22px; }
+
+    /* ── Submit ── */
+    .btn-register {
+      display: block;
+      width: 100%;
+      background: linear-gradient(135deg, #ea580c, #f97316);
+      color: #fff;
+      border: none;
+      border-radius: 9px;
+      padding: 13px;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      letter-spacing: 0.02em;
+      margin-top: 28px;
+      transition: opacity 0.15s, transform 0.1s, box-shadow 0.15s;
+      box-shadow: 0 4px 14px rgba(234,88,12,0.35);
+    }
+    .btn-register:hover {
+      opacity: 0.92;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(234,88,12,0.45);
+    }
+    .btn-register:active { transform: translateY(0); }
+
+    .form-note {
+      text-align: center;
+      font-size: 0.77rem;
+      color: #9ca3af;
+      margin-top: 14px;
+      line-height: 1.5;
+    }
+    .form-note span { color: #dc2626; }
+
+    /* ── Footer below card ── */
+    .page-footer {
+      margin-top: 28px;
+      font-size: 0.78rem;
+      color: #475569;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Event header (above card) ── -->
+  <header class="event-header" role="banner">
+    <div class="event-badge">In-person &amp; Virtual · Oct 14–16, 2027</div>
+    <h1>DevPulse <span>Conference</span></h1>
+    <p>The premier gathering for engineers, product thinkers, and founders building the next wave of developer tooling.</p>
+    <div class="event-meta">
+      <span>📍 Austin Convention Center, TX</span>
+      <span>🎟 2 400+ Attendees</span>
+      <span>🗣 60+ Speakers</span>
+    </div>
+  </header>
+
+  <!-- ── Registration Card ── -->
+  <main role="main" id="main-content">
+    <div class="registration-card">
+      <div class="card-accent-bar" role="presentation"></div>
+      <div class="card-body">
+
+        <form id="event_registration_form" method="post" action="#" novalidate>
+
+          <!-- Attendee info -->
+          <h2 class="section-label">Attendee Information</h2>
+
+          <div class="field">
+            <label for="attendee_name">Full Name<span class="req" aria-hidden="true">*</span></label>
+            <input
+              type="text"
+              id="attendee_name"
+              name="attendee_name"
+              placeholder="Alex Rivera"
+              autocomplete="name"
+              required
+            />
+          </div>
+
+          <div class="field">
+            <label for="personal_email">Personal Email<span class="req" aria-hidden="true">*</span><span class="hint">(used for ticket delivery)</span></label>
+            <input
+              type="email"
+              id="personal_email"
+              name="personal_email"
+              placeholder="alex@personal-email.com"
+              autocomplete="email"
+              required
+            />
+          </div>
+
+          <!-- About you -->
+          <h2 class="section-label">About You</h2>
+
+          <div class="field">
+            <label for="short_bio">Write a short bio for the event programme.<span class="req" aria-hidden="true">*</span><span class="hint">(max 200 words)</span></label>
+            <textarea
+              id="short_bio"
+              name="short_bio"
+              placeholder="A brief description of who you are, what you build, and what you're passionate about. This may appear in the printed programme."
+              rows="5"
+              required
+            ></textarea>
+          </div>
+
+          <div class="field">
+            <label for="event_goals">What are you hoping to get out of this event?</label>
+            <textarea
+              id="event_goals"
+              name="event_goals"
+              placeholder="e.g. meeting collaborators, learning about specific talks, exploring sponsor booths, finding co-founders…"
+              rows="4"
+            ></textarea>
+          </div>
+
+          <!-- Preferences -->
+          <h2 class="section-label">Preferences &amp; Logistics</h2>
+
+          <div class="field">
+            <label for="dietary_preference">Dietary Preference<span class="req" aria-hidden="true">*</span></label>
+            <div class="select-wrap">
+              <select id="dietary_preference" name="dietary_preference" required>
+                <option value="" disabled selected>Select one…</option>
+                <option value="none">No restrictions</option>
+                <option value="vegetarian">Vegetarian</option>
+                <option value="vegan">Vegan</option>
+                <option value="gluten_free">Gluten-free</option>
+                <option value="halal">Halal</option>
+                <option value="kosher">Kosher</option>
+                <option value="nut_allergy">Nut allergy</option>
+                <option value="other">Other (please contact us)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="tshirt_size">T-Shirt Size<span class="req" aria-hidden="true">*</span></label>
+            <div class="select-wrap">
+              <select id="tshirt_size" name="tshirt_size" required>
+                <option value="" disabled selected>Select size…</option>
+                <option value="xs">XS</option>
+                <option value="s">S</option>
+                <option value="m">M</option>
+                <option value="l">L</option>
+                <option value="xl">XL</option>
+                <option value="xxl">XXL</option>
+                <option value="3xl">3XL</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Speaker interest — checkbox -->
+          <div class="divider" role="separator"></div>
+          <fieldset>
+            <legend>Speaker Consideration</legend>
+            <div class="checkbox-single">
+              <input
+                type="checkbox"
+                id="speaker_interest"
+                name="speaker_interest"
+                value="yes"
+              />
+              <label for="speaker_interest">
+                I'd like to be considered as a speaker for DevPulse 2027.
+                Our programme team will reach out separately with a CFP form.
+              </label>
+            </div>
+          </fieldset>
+
+          <!-- Submit -->
+          <button type="submit" class="btn-register">Confirm Registration →</button>
+          <p class="form-note"><span>*</span> Required fields &nbsp;·&nbsp; Your data is processed in accordance with our privacy policy.</p>
+
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer class="page-footer" role="contentinfo">
+    &copy; 2027 DevPulse Conference · Questions? hello@devpulse.io
+  </footer>
+
+</body>
+</html>

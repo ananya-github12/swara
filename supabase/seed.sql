@@ -1,0 +1,2 @@
+-- Intentionally empty. Do not add real users, credentials, API keys, or production data here.
+-- Local Auth users should be created by the test or development flow that needs them.

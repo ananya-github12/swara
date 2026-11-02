@@ -1,0 +1,6 @@
+{
+  "compilerOptions": { "strict": true, "lib": ["deno.window", "dom", "es2022"] },
+  "imports": { "npm:@supabase/server": "npm:@supabase/server@1.4.1", "postgres": "npm:postgres@3.4.3" },
+  "lock": true,
+  "fmt": { "useTabs": false }
+}

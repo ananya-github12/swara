@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Senior AI Product Manager — Apply | Meridian Labs</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                   "Helvetica Neue", Arial, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      background: #f3f4f6;
+      color: #1f2937;
+    }
+
+    /* ── Header ── */
+    .site-header {
+      background: #0f172a;
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+    .site-header .logo {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #f8fafc;
+      letter-spacing: -0.5px;
+    }
+    .site-header .logo span { color: #6366f1; }
+    .site-header nav a {
+      color: #94a3b8;
+      text-decoration: none;
+      margin-left: 24px;
+      font-size: 0.875rem;
+    }
+
+    /* ── Job Banner ── */
+    .job-banner {
+      background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+      color: #fff;
+      padding: 40px 40px 36px;
+    }
+    .job-banner .dept-tag {
+      display: inline-block;
+      background: rgba(99,102,241,0.35);
+      border: 1px solid rgba(99,102,241,0.6);
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 2px 10px;
+      margin-bottom: 14px;
+      color: #c7d2fe;
+    }
+    .job-banner h1 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      letter-spacing: -0.5px;
+    }
+    .job-banner .meta {
+      display: flex;
+      gap: 20px;
+      font-size: 0.875rem;
+      color: #a5b4fc;
+      flex-wrap: wrap;
+    }
+    .job-banner .meta span::before { margin-right: 5px; }
+
+    /* ── Layout ── */
+    .page-body {
+      max-width: 860px;
+      margin: 36px auto 60px;
+      padding: 0 20px;
+    }
+    .progress-bar {
+      background: #e5e7eb;
+      border-radius: 99px;
+      height: 4px;
+      margin-bottom: 28px;
+    }
+    .progress-bar-fill {
+      background: #6366f1;
+      width: 33%;
+      height: 100%;
+      border-radius: 99px;
+    }
+    .step-label {
+      font-size: 0.8rem;
+      color: #6b7280;
+      margin-bottom: 24px;
+      margin-top: -18px;
+    }
+
+    /* ── Card / Section ── */
+    .card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 32px 36px;
+      margin-bottom: 20px;
+    }
+    .card-title {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #6366f1;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #e0e7ff;
+    }
+
+    /* ── Grid ── */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px 24px;
+    }
+    @media (max-width: 600px) { .grid-2 { grid-template-columns: 1fr; } }
+    .full-width { grid-column: 1 / -1; }
+
+    /* ── Form elements ── */
+    .field { display: flex; flex-direction: column; gap: 6px; }
+
+    label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #374151;
+      letter-spacing: 0.01em;
+    }
+    label .req { color: #dc2626; margin-left: 3px; }
+    label .hint {
+      font-weight: 400;
+      color: #6b7280;
+      font-size: 0.75rem;
+      margin-left: 4px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="url"],
+    select,
+    textarea {
+      border: 1.5px solid #d1d5db;
+      border-radius: 6px;
+      padding: 9px 12px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      color: #111827;
+      background: #fafafa;
+      transition: border-color 0.15s, box-shadow 0.15s;
+      width: 100%;
+    }
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="tel"]:focus,
+    input[type="url"]:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: #6366f1;
+      box-shadow: 0 0 0 3px rgba(99,102,241,0.15);
+      background: #fff;
+    }
+    input::placeholder, textarea::placeholder { color: #9ca3af; font-style: italic; }
+
+    textarea {
+      resize: vertical;
+      min-height: 110px;
+      line-height: 1.55;
+    }
+    select { appearance: none; cursor: pointer; }
+    .select-wrap { position: relative; }
+    .select-wrap::after {
+      content: "▾";
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #6b7280;
+      pointer-events: none;
+      font-size: 0.9rem;
+    }
+
+    /* ── Fieldset (radio/checkbox groups) ── */
+    fieldset {
+      border: none;
+      padding: 0;
+    }
+    legend {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 10px;
+    }
+    legend .req { color: #dc2626; margin-left: 3px; }
+
+    .radio-group, .checkbox-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .radio-group label, .checkbox-group label {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-weight: 400;
+      font-size: 0.875rem;
+      color: #374151;
+      cursor: pointer;
+    }
+    .radio-group input[type="radio"],
+    .checkbox-group input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      accent-color: #6366f1;
+      cursor: pointer;
+    }
+
+    /* ── Disclaimer ── */
+    .disclaimer {
+      font-size: 0.78rem;
+      color: #6b7280;
+      line-height: 1.5;
+      padding: 14px 18px;
+      background: #f9fafb;
+      border-left: 3px solid #d1d5db;
+      border-radius: 4px;
+    }
+
+    /* ── Submit ── */
+    .form-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .btn-submit {
+      background: #4f46e5;
+      color: #fff;
+      border: none;
+      border-radius: 7px;
+      padding: 12px 32px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s, transform 0.1s;
+      letter-spacing: 0.02em;
+    }
+    .btn-submit:hover { background: #4338ca; transform: translateY(-1px); }
+    .btn-submit:active { transform: translateY(0); }
+    .save-draft {
+      font-size: 0.85rem;
+      color: #6366f1;
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-decoration: underline;
+      font-family: inherit;
+    }
+    .required-note {
+      font-size: 0.78rem;
+      color: #6b7280;
+    }
+    .required-note span { color: #dc2626; }
+  </style>
+</head>
+<body>
+
+  <!-- ── Site Header ── -->
+  <header class="site-header" role="banner">
+    <div class="logo">Meridian<span>Labs</span></div>
+    <nav aria-label="Site navigation">
+      <a href="#">Careers</a>
+      <a href="#">About</a>
+    </nav>
+  </header>
+
+  <!-- ── Job Banner ── -->
+  <div class="job-banner" role="region" aria-label="Job details">
+    <div class="dept-tag">Product · Full-time · Remote</div>
+    <h1>Senior AI Product Manager</h1>
+    <div class="meta">
+      <span>📍 San Francisco, CA (or Remote)</span>
+      <span>💼 Product &amp; Strategy</span>
+      <span>📅 Posted July 2026</span>
+    </div>
+  </div>
+
+  <!-- ── Main Content ── -->
+  <main class="page-body" id="main-content">
+    <div class="progress-bar" role="progressbar" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100" aria-label="Application step 1 of 3">
+      <div class="progress-bar-fill"></div>
+    </div>
+    <p class="step-label">Step 1 of 3 — Your Information</p>
+
+    <form id="job_application_form" method="post" action="#" novalidate>
+
+      <!-- ── Section 1: Personal Info ── -->
+      <section class="card" aria-labelledby="section_personal">
+        <h2 class="card-title" id="section_personal">Personal Information</h2>
+        <div class="grid-2">
+
+          <div class="field">
+            <label for="full_name">Full Name<span class="req" aria-hidden="true">*</span></label>
+            <input
+              type="text"
+              id="full_name"
+              name="full_name"
+              placeholder="Jane Smith"
+              autocomplete="name"
+              required
+            />
+          </div>
+
+          <div class="field">
+            <label for="email">Email Address<span class="req" aria-hidden="true">*</span></label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="jane@example.com"
+              autocomplete="email"
+              required
+            />
+          </div>
+
+          <div class="field">
+            <label for="phone">Phone Number<span class="req" aria-hidden="true">*</span><span class="hint">(with country code)</span></label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              placeholder="+1 415 555 0100"
+              autocomplete="tel"
+              required
+            />
+          </div>
+
+          <div class="field">
+            <label for="current_city">Current City<span class="req" aria-hidden="true">*</span></label>
+            <input
+              type="text"
+              id="current_city"
+              name="current_city"
+              placeholder="San Francisco, CA"
+              autocomplete="address-level2"
+              required
+            />
+          </div>
+
+          <div class="field full-width">
+            <label for="linkedin_url">LinkedIn Profile URL</label>
+            <input
+              type="url"
+              id="linkedin_url"
+              name="linkedin_url"
+              placeholder="https://linkedin.com/in/janesmith"
+              autocomplete="url"
+            />
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ── Section 2: Professional Details ── -->
+      <section class="card" aria-labelledby="section_professional">
+        <h2 class="card-title" id="section_professional">Professional Details</h2>
+        <div class="grid-2">
+
+          <div class="field">
+            <label for="years_of_experience">Years of Experience<span class="req" aria-hidden="true">*</span></label>
+            <div class="select-wrap">
+              <select id="years_of_experience" name="years_of_experience" required>
+                <option value="" disabled selected>Select range…</option>
+                <option value="0-1">0 – 1 year</option>
+                <option value="2-3">2 – 3 years</option>
+                <option value="4-6">4 – 6 years</option>
+                <option value="7-10">7 – 10 years</option>
+                <option value="10+">10+ years</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="referral_source">How did you hear about us?<span class="req" aria-hidden="true">*</span></label>
+            <div class="select-wrap">
+              <select id="referral_source" name="referral_source" required>
+                <option value="" disabled selected>Select one…</option>
+                <option value="linkedin">LinkedIn</option>
+                <option value="company_website">Company Website</option>
+                <option value="employee_referral">Employee Referral</option>
+                <option value="job_board">Job Board (Indeed / Glassdoor)</option>
+                <option value="twitter_x">Twitter / X</option>
+                <option value="newsletter">Newsletter</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Work Auth — fieldset/legend for radio group -->
+          <div class="field full-width" style="margin-top:4px;">
+            <fieldset>
+              <legend>Are you legally authorized to work in the United States?<span class="req" aria-hidden="true">*</span></legend>
+              <div class="radio-group">
+                <label for="work_auth_yes">
+                  <input type="radio" id="work_auth_yes" name="work_authorization" value="yes" required />
+                  Yes
+                </label>
+                <label for="work_auth_no">
+                  <input type="radio" id="work_auth_no" name="work_authorization" value="no" />
+                  No
+                </label>
+              </div>
+            </fieldset>
+          </div>
+
+          <!-- Areas of Interest — fieldset/legend for checkbox group -->
+          <div class="field full-width" style="margin-top:4px;">
+            <fieldset>
+              <legend>Areas of Interest<span class="req" aria-hidden="true">*</span><span style="font-weight:400;color:#6b7280;font-size:0.75rem;margin-left:4px;">(select all that apply)</span></legend>
+              <div class="checkbox-group" style="display:grid;grid-template-columns:1fr 1fr;gap:8px 32px;">
+                <label for="area_ml">
+                  <input type="checkbox" id="area_ml" name="areas_of_interest" value="ml" />
+                  Machine Learning / AI
+                </label>
+                <label for="area_product">
+                  <input type="checkbox" id="area_product" name="areas_of_interest" value="product" />
+                  Product Management
+                </label>
+                <label for="area_backend">
+                  <input type="checkbox" id="area_backend" name="areas_of_interest" value="backend" />
+                  Backend Engineering
+                </label>
+                <label for="area_design">
+                  <input type="checkbox" id="area_design" name="areas_of_interest" value="design" />
+                  Design / UX
+                </label>
+                <label for="area_data">
+                  <input type="checkbox" id="area_data" name="areas_of_interest" value="data" />
+                  Data &amp; Analytics
+                </label>
+                <label for="area_infra">
+                  <input type="checkbox" id="area_infra" name="areas_of_interest" value="infra" />
+                  Infrastructure / DevOps
+                </label>
+              </div>
+            </fieldset>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ── Section 3: Application Questions ── -->
+      <section class="card" aria-labelledby="section_questions">
+        <h2 class="card-title" id="section_questions">Application Questions</h2>
+        <div class="grid-2">
+
+          <div class="field full-width">
+            <label for="about_yourself">Tell us about yourself.<span class="req" aria-hidden="true">*</span></label>
+            <textarea
+              id="about_yourself"
+              name="about_yourself"
+              placeholder="Share a brief professional introduction — your background, what drives you, and what you're working on right now."
+              rows="5"
+              required
+            ></textarea>
+          </div>
+
+          <div class="field full-width">
+            <label for="ai_product_experience">Describe your experience building AI products.</label>
+            <textarea
+              id="ai_product_experience"
+              name="ai_product_experience"
+              placeholder="Describe specific products, your role, the technical challenges you navigated, and the outcomes you delivered."
+              rows="5"
+            ></textarea>
+          </div>
+
+          <div class="field full-width">
+            <label for="educational_background">What is your educational background?<span class="req" aria-hidden="true">*</span></label>
+            <textarea
+              id="educational_background"
+              name="educational_background"
+              placeholder="Include degree(s), institution(s), graduation year(s), and any relevant certifications or coursework."
+              rows="4"
+              required
+            ></textarea>
+          </div>
+
+          <div class="field full-width">
+            <label for="interest_in_opportunity">Why are you interested in this opportunity?</label>
+            <textarea
+              id="interest_in_opportunity"
+              name="interest_in_opportunity"
+              placeholder="Tell us what excites you about Meridian Labs and this specific role."
+              rows="5"
+            ></textarea>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ── Footer ── -->
+      <div class="card" style="padding:24px 36px;">
+        <p class="disclaimer" style="margin-bottom:20px;">
+          By submitting this application, you acknowledge that the information provided is accurate
+          to the best of your knowledge. Meridian Labs is an equal opportunity employer and does
+          not discriminate on the basis of race, religion, gender, age, disability, or any other
+          protected characteristic.
+        </p>
+        <div class="form-footer">
+          <p class="required-note"><span>*</span> Required fields</p>
+          <div style="display:flex;gap:20px;align-items:center;">
+            <button type="button" class="save-draft">Save as draft</button>
+            <button type="submit" class="btn-submit">Submit Application →</button>
+          </div>
+        </div>
+      </div>
+
+    </form>
+  </main>
+
+</body>
+</html>

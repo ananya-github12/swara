@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Readable page fixture</title>
+  </head>
+  <body>
+    <nav>Account Billing Settings</nav>
+    <main>
+      <article>
+        <h1>Research fellowship</h1>
+        <p>The fellowship supports independent research in trustworthy AI.</p>
+        <h2>What you will do</h2>
+        <p>
+          Fellows publish their findings and present them to the community.
+        </p>
+        <p hidden>This hidden deadline must not be extracted.</p>
+        <p style="display: none">This invisible salary must not be extracted.</p>
+        <div aria-hidden="true">Screen-reader-hidden noisy text.</div>
+      </article>
+      <form>
+        <label for="secret">Password</label>
+        <input id="secret" type="password" value="never-extract-this" />
+      </form>
+      <div
+        contenteditable="true"
+        role="textbox"
+        aria-label="Reply body"
+      >Existing draft</div>
+    </main>
+    <footer>Privacy Terms Contact</footer>
+  </body>
+</html>

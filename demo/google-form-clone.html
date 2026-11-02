@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Google Form Clone</title>
+  </head>
+  <body>
+    <h1>Candidate preferences</h1>
+
+    <div role="listitem">
+      <div role="heading">Full name <span aria-hidden="true">*</span></div>
+      <input id="candidate-name" name="candidate_name" type="text" required />
+    </div>
+
+    <div role="listitem">
+      <div role="heading" id="commute-question">
+        Preferred commute <span aria-hidden="true">*</span>
+      </div>
+      <div id="commute" role="radiogroup" aria-required="true">
+        <div role="radio" aria-checked="false" data-value="public">
+          Public transport
+        </div>
+        <div role="radio" aria-checked="false" data-value="drive">
+          Drive
+        </div>
+      </div>
+    </div>
+
+    <div id="skills" role="listitem">
+      <div role="heading">Skills <span aria-hidden="true">*</span></div>
+      <div role="checkbox" aria-checked="true" data-answer-value="typescript">
+        TypeScript
+      </div>
+      <div role="checkbox" aria-checked="false" data-answer-value="python">
+        Python
+      </div>
+    </div>
+
+    <div role="listitem">
+      <div role="heading">Office location *</div>
+      <div id="office-location" role="listbox" aria-required="true">
+        <div role="option" aria-selected="false" data-value="blr">Bengaluru</div>
+        <div role="option" aria-selected="false" aria-label="Pune">Pune office</div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "lib": ["deno.window", "dom", "es2022"]
+  },
+  "imports": {
+    "npm:@supabase/server": "npm:@supabase/server@1.4.1"
+  },
+  "lock": true,
+  "fmt": {
+    "useTabs": false
+  }
+}

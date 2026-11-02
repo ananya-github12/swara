@@ -1,0 +1,22 @@
+node_modules/
+dist/
+build/
+.vite/
+*.tsbuildinfo
+
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+
+.env
+.env.local
+*.local
+
+.DS_Store
+*.log
+
+# Real personal details for the demo vault; never committed.
+server/seed_local.py
