@@ -1,11 +1,29 @@
 # Swara
 
-Swara is a voice-native personal context layer for the web. It combines three inputs — the current webpage's visible structure, a natural-language voice instruction from the user, and a persistent personal context vault — to produce structured browser actions against the fields on the current page. The goal is to let users complete any web form as naturally as speaking aloud, without repeatedly re-entering the same personal details.
+Swara is a voice-first browser assistant for getting things done across the web. It combines what is visible on the current page, the user's spoken instruction, and personal context they choose to save, then carries out bounded browser actions. Form filling is one use case alongside navigating pages and tabs, working through multi-step tasks, and replaying saved workflows.
 
-Swara is a bounded browser agent rather than an unrestricted autonomous one. It
-can continue a task across pages and tabs, but every step is grounded in a fresh
-page observation and verified action results. It never submits, sends, pays,
-purchases, deletes, cancels, or applies on the user's behalf.
+Swara keeps the user in control. It can continue a task across pages and tabs,
+but every step is grounded in a fresh page observation and verified action
+results. It does not submit, send, pay, purchase, delete, cancel, or apply on
+the user's behalf.
+
+## What Swara can do
+
+- **Work with the page in front of you.** Use voice to ask Swara to interact
+  with page controls, complete fields, or continue a task across pages and tabs.
+- **Use personal context.** Keep reusable facts and documents in the Vault so
+  relevant context can be used without re-entering it for each task. The Vault
+  supports authenticated accounts and local-first document extraction, with OCR
+  for scanned or otherwise unreadable files.
+- **Repeat useful browser tasks.** Record verified, reversible actions as local
+  workflows, then replay, import, or export them. Sensitive values are supplied
+  at run time.
+- **Stay observable and interruptible.** See the active target and verified
+  action results, and pause, resume, skip, or cancel a run from the side panel.
+- **Connect to account and product services.** The Supabase data plane supports
+  identity, Vault data, task execution records, and artifacts. An optional
+  Alterity control-plane integration provides product entitlements and usage
+  metering.
 
 ## Architecture
 
@@ -19,9 +37,11 @@ FastAPI + Pipecat Server
   ├── Sarvam AI               — speech-to-text, text-to-speech, OCR fallback
   └── Gemini                  — reasoning, field-mapping, intent resolution
           ↕
-Supabase
-  ├── Alterity Control Plane   — identity, tenants, entitlements, billing, shared KB
-  └── Swara Data Plane         — tasks, browser steps, artifacts, context references
+Supabase (Swara platform)
+  ├── Swara Auth + user-scoped data — identity, Vault, workflows, task records
+  └── Edge Functions + workers      — uploads, search, account lifecycle, metering
+          ↕ (optional bootstrap / usage contract)
+Alterity Control Plane              — product entitlements and billing
 ```
 
 ## Browser execution loop
@@ -50,8 +70,9 @@ ties, and never heals submit or irreversible controls.
 
 Verified safe actions can also be recorded as versioned local workflows in
 `chrome.storage.local`, exported/imported as strictly validated JSON, and
-replayed through the same action router. Secrets become runtime-only variables;
-workflows do not use the Vault, Supabase, server storage, or background schedules.
+replayed through the same action router. Secrets become runtime-only variables.
+The local workflow library works without Vault access or account sign-in and
+does not run workflows on a background schedule.
 
 Swara is designed to ship as an Alterity subproduct without becoming tightly
 coupled to the Alterity web application. Alterity remains the control plane and
@@ -85,6 +106,10 @@ swara/
 │   ├── app.py
 │   ├── requirements.txt
 │   └── .env.example
+├── supabase/           # Swara database, migrations, and Edge Functions
+│   ├── functions/
+│   └── migrations/
+├── docs/               # Product and integration contracts
 └── demo/               # Self-contained HTML fixture forms for development
     ├── job-application.html
     └── event-registration.html
@@ -98,7 +123,7 @@ swara/
 cd extension
 npm install
 npm run build
-npm test          # runs the extractor against the demo fixtures in jsdom
+npm test          # runs the extension unit test suite
 ```
 
 Then open `chrome://extensions`, enable **Developer mode**, click **Load unpacked**, and select the `extension/dist` directory. To use the fixtures in `demo/`, also enable **Allow access to file URLs** on the extension's details page.
